@@ -7,8 +7,10 @@ public class Program {
 	public static void main(String[] args) {
 
 		Exam[] exams = new Exam[3];
-		Test test = new Test();
-		System.out.println(test.current);
+		ExamList list = new ExamList();
+		list.exams = new Exam[3];
+		list.current = 0;
+		
 		int menu;
 		boolean keepLoop = true;
 		
@@ -17,10 +19,10 @@ public class Program {
 		  				
 		  switch(menu) {
 		  case 1:
-			  inputList(exams, test); 
+			  inputList(list); 
 			  break;
 		  case 2: 
-		      printList(exams, test);	//exams라는 것을 출력해주세요 
+		      printList(list);
 		      break;
 		  case 3:
 			  System.out.println("Good Bye");
@@ -33,11 +35,11 @@ public class Program {
 		}
 	}
 	
-	private static void printList(Exam[] exams, Test t) {
+	private static void printList(ExamList list) {
 		System.out.println("성적 출력");
-		int size = t.current;
+		int size = list.current;
 		for(int i=0; i<size; i++) {
-			Exam exam = exams[i];
+			Exam exam = list.exams[i];
 			int kor = exam.kor;	//임시 변수 사용 
 			int eng = exam.eng;
 			int math = exam.math;
@@ -55,7 +57,7 @@ public class Program {
 		}
 	}
 
-	private static void inputList(Exam[] exams, Test t) { // 지역변수 current를 넘겨받음 
+	private static void inputList(ExamList list) { // 지역변수 current를 넘겨받음 
 		Scanner scan = new Scanner(System.in);
 	    System.out.println("성적 입력");
 	   	int kor, eng, math;
@@ -91,8 +93,8 @@ public class Program {
 	      	exam.eng = eng;
 	      	exam.math = math;
 	      	
-	      	exams[t.current] = exam;
-	      	t.current++;			// current 사본에 +1 하므로 원 current는 그대로 0
+	      	list.exams[list.current] = exam;
+	      	list.current++;			// current 사본에 +1 하므로 원 current는 그대로 0
 	}
 			
 	static int inputMenu() {
@@ -104,10 +106,8 @@ public class Program {
 		return menu;
 	}
 }
-class Test{
+class ExamList{
+	Exam[] exams;
 	int current;
 	
-	public Test() {
-		current = 0;
-	}
 }
