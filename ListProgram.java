@@ -5,11 +5,12 @@ import java.util.Scanner;
 public class ListProgram {
 
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
 
 		ExamList list = new ExamList();
 		list.exams = new Exam[3];  // before : Exam[] exams = new Exam[3];
 		list.current = 0;
-		
+		int size = 0;
 		int menu;
 		boolean keepLoop = true;
 		
@@ -33,9 +34,13 @@ public class ListProgram {
 		}
 	}
 	
-	private static void printList(ExamList list) {
+	private static void printList(ExamList list) { // 같은 기능 함수가 두 개인 경우, 코드 집중화 실시
+		printList(list, list.current);
+	}
+	
+	private static void printList(ExamList list, int size) {
 		System.out.println("성적 출력");
-		int size = list.current;
+//		int size = list.current;
 		for(int i=0; i<size; i++) {
 			Exam exam = list.exams[i]; 
 			int kor = exam.kor;		   
