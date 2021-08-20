@@ -8,7 +8,7 @@ public class Program {
 		Scanner scan = new Scanner(System.in);
 
 		ExamList list = new ExamList();
-		ExamList.init(list);		// 객체 생성, 초기화는 ExamList 클래스에서 하도록 함수 설정 
+		list.init();		// 객체 생성, 초기화는 ExamList 클래스에서 하도록 함수 설정 
 //		list.exams = new Exam[3]; 
 //		list.current = 0;
 		
@@ -20,10 +20,11 @@ public class Program {
 		  				
 		  switch(menu) {
 		  case 1:
-			  ExamList.inputList(list); // 중요! 외부 클래스의 함수 이용 시 '클래스.' 필수 
+//			  ExamList.inputList(list); // 중요! 외부 클래스의 함수 이용 시 '클래스.' 필수 
+			  list.inputList();;
 			  break;
 		  case 2: 
-			  ExamList.printList(list);
+			  list.printList();
 		      break;
 		  case 3:
 			  System.out.println("Good Bye");
@@ -34,8 +35,6 @@ public class Program {
 		  } 
 		}
 	}
-	
-	
 			
 	static int inputMenu() {
 		Scanner scan = new Scanner(System.in);

@@ -6,15 +6,14 @@ public class ExamList{
 	Exam[] exams;
 	int current;
 	
-	static void printList(ExamList list) { // 같은 기능 함수가 두 개인 경우, 코드 집중화 실시
-		printList(list, list.current);
+	void printList() { 
+		this.printList(this.current);  // printList(list, list.current);
 	}
 	
-	static void printList(ExamList list, int size) {
+	void printList(int size) {
 		System.out.println("성적 출력");
-//		int size = list.current;
 		for(int i=0; i<size; i++) {
-			Exam exam = list.exams[i]; 
+			Exam exam = this.exams[i]; 
 			int kor = exam.kor;		   
 			int eng = exam.eng;
 			int math = exam.math;
@@ -29,8 +28,8 @@ public class ExamList{
 		    System.out.printf("평균 : %6.2f\n", avg);
 		}
 	}
-
-	static void inputList(ExamList list) {  
+		
+	void inputList() {  
 		Scanner scan = new Scanner(System.in);
 	    System.out.println("성적 입력");
 
@@ -68,25 +67,24 @@ public class ExamList{
 	      	exam.eng = eng;
 	      	exam.math = math;
 
-	      	Exam[] exams = list.exams;
-	      	int size = list.current;	// 임시 변수 생성 
+	      	Exam[] exams = this.exams;
+	      	int size = this.current;	// 임시 변수 생성 
 	      	
 	      	if(exams.length == size) {
 	    		Exam[] temp = new Exam[size+5];
 	      		for(int i=0; i<size; i++) {
 	      			temp[i] = exams[i];
 	      		}
-	      		list.exams = temp;  // exams에 넣으면 exams에 들어감  
+	      		this.exams = temp;  // exams에 넣으면 exams에 들어감  
 	      	}
-	      	list.exams[list.current] = exam;
-	      	list.current++;
+	      	this.exams[this.current] = exam;
+	      	this.current++;
 	}
-
 	
-	public static void init(ExamList list) {
+	public void init() {
 		// TODO Auto-generated method stub
-		list.exams = new Exam[3]; 
-		list.current = 0;
+		this.exams = new Exam[3]; 
+		this.current = 0;
 		
 	}
 	
