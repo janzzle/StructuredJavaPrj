@@ -6,12 +6,8 @@ public class Program {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-
 		ExamList list = new ExamList();
-		list.init();		// 객체 생성, 초기화는 ExamList 클래스에서 하도록 함수 설정 
-//		list.exams = new Exam[3]; 
-//		list.current = 0;
-		
+				
 		int menu;
 		boolean keepLoop = true;
 		

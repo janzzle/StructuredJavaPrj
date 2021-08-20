@@ -3,14 +3,14 @@ package Part3.ex2.메소드;
 import java.util.Scanner;
 
 public class ExamList{
-	Exam[] exams;
-	int current;
+	private Exam[] exams;
+	private int current;
 	
-	void printList() { 
+	public void printList() { 
 		this.printList(this.current);  // printList(list, list.current);
 	}
 	
-	void printList(int size) {
+	public void printList(int size) {
 		System.out.println("성적 출력");
 		for(int i=0; i<size; i++) {
 			Exam exam = this.exams[i]; 
@@ -29,7 +29,7 @@ public class ExamList{
 		}
 	}
 		
-	void inputList() {  
+	public void inputList() {  
 		Scanner scan = new Scanner(System.in);
 	    System.out.println("성적 입력");
 
@@ -68,7 +68,7 @@ public class ExamList{
 	      	exam.math = math;
 
 	      	Exam[] exams = this.exams;
-	      	int size = this.current;	// 임시 변수 생성 
+	      	int size = this.current;	
 	      	
 	      	if(exams.length == size) {
 	    		Exam[] temp = new Exam[size+5];
@@ -81,7 +81,7 @@ public class ExamList{
 	      	this.current++;
 	}
 	
-	public void init() {
+	public ExamList() {
 		// TODO Auto-generated method stub
 		this.exams = new Exam[3]; 
 		this.current = 0;
